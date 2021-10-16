@@ -1,0 +1,1 @@
+datadir = 'E:\Project\Dermatoglyphics-Pattern-Identification-System'

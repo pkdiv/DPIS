@@ -1,0 +1,54 @@
+CREATE TABLE IF NOT EXISTS images (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `rs` LONGBLOB,
+  `rr` LONGBLOB,
+  `rm` LONGBLOB,
+  `ri` LONGBLOB,
+  `rt` LONGBLOB,
+  `ls` LONGBLOB,
+  `lr` LONGBLOB,
+  `lm` LONGBLOB,
+  `li` LONGBLOB,
+  `lt` LONGBLOB,
+  PRIMARY KEY (`ID`));
+
+CREATE TABLE IF NOT EXISTS ridgecount (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `rs` INT(5),
+  `rr` INT(5),
+  `rm` INT(5),
+  `ri` INT(5),
+  `rt` INT(5),
+  `ls` INT(5),
+  `lr` INT(5),
+  `lm` INT(5),
+  `li` INT(5),
+  `lt` INT(5),
+  PRIMARY KEY (`ID`));
+
+CREATE TABLE IF NOT EXISTS types (
+  `ID` INT(11) NOT NULL AUTO_INCREMENT,
+  `rs` CHAR(1),
+  `rr` CHAR(1),
+  `rm` CHAR(1),
+  `ri` CHAR(1),
+  `rt` CHAR(1),
+  `ls` CHAR(1),
+  `lr` CHAR(1),
+  `lm` CHAR(1),
+  `li` CHAR(1),
+  `lt` CHAR(1),
+  PRIMARY KEY (`ID`));
+
+CREATE TABLE IF NOT EXISTS users (
+  `ID` INT(11) NOT NULL,
+  `NAME` VARCHAR(45) NOT NULL,
+  `DOB` DATE NOT NULL,
+  `GENDER` CHAR(1) NULL,
+  `imageID` INT(11) NOT NULL,
+  `ridgeCountID` INT(11) NOT NULL,
+  `typeID` INT(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`imageID`)     REFERENCES `images` (`ID`)     ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`ridgeCountID`) REFERENCES `ridgecount` (`ID`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (`typeID`)      REFERENCES `types` (`ID`)      ON DELETE RESTRICT ON UPDATE CASCADE);
